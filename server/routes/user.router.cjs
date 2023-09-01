@@ -1,7 +1,7 @@
 const express = require("express");
 const {
   rejectUnauthenticated,
-} = require("../modules/authentication-middleware.cjs");
+} = require("../middlewares/auth.middleware.cjs");
 const linkStrategy = require("../strategies/link.strategy.cjs");
 
 const router = express.Router();
