@@ -1,4 +1,15 @@
-const rejectUnauthenticated = (req, res, next) => {
+const passport = require("../modules/passport.cjs");
+
+const sendEmailMiddleware = passport.authenticate("magiclink", {
+  action: "requestToken",
+});
+
+const verifyEmailMiddleware = passport.authenticate("magiclink", {
+  action: "acceptToken",
+  allowReuse: true,
+});
+
+const requireAuthenticationMiddleware = (req, res, next) => {
   // check if logged in
   if (req.isAuthenticated()) {
     // They were authenticated! User may do the next thing
@@ -10,4 +21,4 @@ const rejectUnauthenticated = (req, res, next) => {
   }
 };
 
-module.exports = { rejectUnauthenticated };
+module.exports = { sendEmailMiddleware, verifyEmailMiddleware, requireAuthenticationMiddleware };

@@ -2,7 +2,7 @@ const passport = require("passport");
 const userQuery = require("../queries/user.query.cjs");
 const MagicLinkStrategy = require("passport-magic-link").Strategy;
 
-const sendEmailWithToken = require("../modules/email.cjs");
+const sendEmailWithToken = require("./email.cjs");
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -13,7 +13,7 @@ passport.deserializeUser((id, done) => {
     .getUser(id)
     .then((user) => (user ? done(null, user) : done(null, null)))
     .catch((error) => {
-      console.error("Error with query during deserializing user ", error);
+      console.error("Error with query while deserializing user ", error);
       done(error, null);
     });
 });
