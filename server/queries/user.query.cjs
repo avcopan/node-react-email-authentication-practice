@@ -1,5 +1,22 @@
 const pool = require("../modules/pool.cjs");
 
+/** Get a user by ID
+ *
+ * @param {Number} id The user's ID
+ * @returns {Object} The user row, if present; otherwise, undefined
+ */
+const getUser = async (id) => {
+  const queryString = 'SELECT * FROM "user" WHERE id = $1;';
+  const queryParams = [id];
+
+  try {
+    const result = await pool.query(queryString, queryParams);
+    return result.rows[0];
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
 /** Look up a user by their email
  *
  * @param {Object} user An object containing the user's email
@@ -47,6 +64,7 @@ const addUser = async (user) => {
 };
 
 module.exports = {
+  getUser,
   lookupUser,
   addUser,
 };
