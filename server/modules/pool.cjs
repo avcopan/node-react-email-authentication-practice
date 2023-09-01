@@ -9,10 +9,4 @@ pool = new pg.Pool({
   },
 });
 
-// pool
-//   .query("SELECT * FROM users;")
-//   .then((result) => result.rows)
-//   .then(console.log)
-//   .then(console.error);
-
 module.exports = pool;

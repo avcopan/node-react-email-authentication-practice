@@ -10,4 +10,8 @@ ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFE
 
 CREATE INDEX "IDX_session_expire" ON "session" ("expire");
 
--- 
+-- For user authentication
+CREATE TABLE "users" (
+  "id" SERIAL PRIMARY KEY,
+  "email" TEXT UNIQUE NOT NULL
+);
