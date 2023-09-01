@@ -40,7 +40,7 @@ passport.deserializeUser((id, done) => {
 const sendEmail = (user, token) => {
   const link = "http://localhost:3000/api/user/login?token=" + token;
   return sendgrid.send({
-    to: user.username,
+    to: user.email,
     from: process.env.SENDGRID_EMAIL,
     subject: "Sign in",
     text:
@@ -57,7 +57,7 @@ passport.use(
   new MagicLinkStrategy(
     {
       secret: process.env.SERVER_SESSION_SECRET,
-      userFields: ["username"],
+      userFields: ["email"],
       tokenField: "token",
       verifyUserAfterToken: true,
     },

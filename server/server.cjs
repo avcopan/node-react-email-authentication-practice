@@ -4,7 +4,7 @@ require('dotenv').config();
 const app = express();
 
 const sessionMiddleware = require('./modules/session-middleware.cjs');
-const passport = require('./strategies/user.strategy.cjs');
+const passport = require('./strategies/link.strategy.cjs');
 
 // Route includes
 const userRouter = require('./routes/user.router.cjs');

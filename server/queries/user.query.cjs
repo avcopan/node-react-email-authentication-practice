@@ -1,13 +1,13 @@
 const pool = require("../modules/pool.cjs");
 
-/** Look up a user by their username
+/** Look up a user by their email
  *
- * @param {Object} user An object containing the user's username
+ * @param {Object} user An object containing the user's email
  * @returns {Object} The user row, if present; otherwise, undefined
  */
 const lookupUser = async (user) => {
-  const queryString = 'SELECT * FROM "user" WHERE username = $1;';
-  const queryParams = [user.username];
+  const queryString = 'SELECT * FROM "user" WHERE email = $1;';
+  const queryParams = [user.email];
 
   try {
     const result = await pool.query(queryString, queryParams);
@@ -17,9 +17,9 @@ const lookupUser = async (user) => {
   }
 };
 
-/** Add a user by username, if they don't exist
+/** Add a user by email, if they don't exist
  *
- * @param {Object} user An object containing the user's username
+ * @param {Object} user An object containing the user's email
  * @returns {Object} The user row
  */
 const addUser = async (user) => {
@@ -34,8 +34,8 @@ const addUser = async (user) => {
   }
 
   // Otherwise, add them
-  const queryString = 'INSERT INTO "user" (username) VALUES ($1) RETURNING *;';
-  const queryParams = [user.username];
+  const queryString = 'INSERT INTO "user" (email) VALUES ($1) RETURNING *;';
+  const queryParams = [user.email];
 
   try {
     const result = await pool.query(queryString, queryParams);
@@ -51,5 +51,5 @@ module.exports = {
   addUser,
 };
 
-// addUser({ username: "example6@gmail.com" }).then(console.log);
-// addUser({ username: "example8@gmail.com" }).then(console.log);
+// addUser({ email: "example6@gmail.com" }).then(console.log);
+// addUser({ email: "example8@gmail.com" }).then(console.log);
