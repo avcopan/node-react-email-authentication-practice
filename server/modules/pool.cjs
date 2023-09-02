@@ -1,9 +1,6 @@
-/* the only line you likely need to change is
-
- database: 'prime_app',
-
- change `prime_app` to the name of your database, and you should be all set!
-*/
+/**
+ * Establish connection to Postgres DB via PG pool
+ */
 require("dotenv").config();
 
 const pg = require("pg");

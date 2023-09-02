@@ -1,3 +1,6 @@
+/**
+ * Implements SQL queries for the "user" table
+ */
 const pool = require("../modules/pool.cjs");
 
 /** Get a user by ID
