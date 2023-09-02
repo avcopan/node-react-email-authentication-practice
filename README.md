@@ -1,8 +1,11 @@
 # Node-React Email Authentication Practice
 
-The following environment variables must be set in a `.env` file:
+Before running this app, following environment variables must be set in a `.env` file:
 ```
-SERVER_SESSION_SECRET=<Your server session secret>
-DATABASE_URL=<The database URL>
-
+PORT=8002
+SITE_URL=http://localhost:8002
+SERVER_SESSION_SECRET=<your session secret>
+DATABASE_URL=<URL to connect to database>
+SENDGRID_API_KEY=<API key for sendgrid>
+SENDGRID_EMAIL=<The sender email address for sendgrid (must be verified!)>
 ```

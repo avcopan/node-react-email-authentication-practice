@@ -20,7 +20,7 @@ sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
  */
 const sendEmailWithToken = (user, token) => {
   const link = `${process.env.SITE_URL}/api/email/verify?token=${token}`;
-  console.log(link);
+  console.log(`Emailing ${user.email} with link to ${link}`);
   return sendgrid.send({
     to: user.email,
     from: process.env.SENDGRID_EMAIL,
